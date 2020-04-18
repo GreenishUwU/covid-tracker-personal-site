@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="20" >
+        <title>Coronavirus Statistics</title>
+       <link rel="stylesheet" href="style.css" rel="stylesheet" type="text/css"> 
+       <link rel=icon type="image/png" href="favicon.png" sizes="96x96">
+    </head>
+
+<body>
+<p2>Total Confirmed Cases</p2>
+    <div style=" 
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;">
+    <p1><div id="display"></div></p1>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $.ajax({
+    url: 'https://api.thevirustracker.com/free-api?global=stats',
+    dataType: 'json',
+    success: function(data) {
+      document.getElementById('display').textContent = data.results[0].total_cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
+  });
+</script>
+</body>
+</html>
